@@ -14,7 +14,7 @@ Here a way to add [PostCSS] plugin to [project-stub](https://github.com/bem/proj
 	[require('enb-bundle-postcss/techs/enb-bundle-postcss'), {
 		source: '?.post.css',
 		sourcemap: true,
-		plugins: [require('postcss-svg-fallback')({
+		plugins: [require('pocstcss-svg-to-png-selector')({
 			fallbackSelector: '.no-svg'
 		})]
 	}]
