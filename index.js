@@ -1,18 +1,13 @@
 
 'use strict';
-
 var postcss = require('postcss');
-
 var backgroundImageRegex = /url\('?([^')]+\.svg)'?\)/;
-
 
 module.exports = postcss.plugin('postcss-svg-fallback', function(options) {
 	var fallbackSelector;
 
 	options = options || {};
-
 	fallbackSelector = options.fallbackSelector || '.no-svg';
-
 
 	return function (css, result) {
 		var images = [];
