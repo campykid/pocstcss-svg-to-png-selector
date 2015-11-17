@@ -1,34 +1,28 @@
 {
-	"name": "postcss-svg-fallback",
-	"description": "An automatic SVG converter for your CSS files",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/justim/postcss-svg-fallback"
-	},
-	"version": "1.0.2",
-	"main": "index.js",
-	"dependencies": {
-		"postcss": "~4.1.9",
-		"phantomjs": "~1.9.16",
-		"async": "~0.9.0",
-		"when": "~3.7.3"
-	},
-	"devDependencies": {
-		"mocha": "",
-		"chai": ""
-	},
-	"keywords": [
-		"postcss",
-		"postcss-plugin",
-		"svg",
-		"svg-fallback"
-	],
-	"scripts": {
-		"test": "mocha"
-	},
-	"author": {
-		"name": "Tim",
-		"url": "https://github.com/justim"
-	},
-	"license": "MIT"
+  "name": "post-svg-fallback",
+  "version": "1.0.0",
+  "description": "This plugin  automatically writes CSS rule with fallback selector, built on top of the [PostCSS] ecosystem.",
+  "main": "index.js",
+  "dependencies": {
+    "postcss": "^5.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/campykid/postcss-svg-fallback"
+  },
+  "keywords": [
+    "svg",
+    "png",
+    "fallback"
+  ],
+  "author": "justim campykid",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/campykid/postcss-svg-fallback/issues"
+  },
+  "homepage": "https://github.com/campykid/postcss-svg-fallback"
 }
