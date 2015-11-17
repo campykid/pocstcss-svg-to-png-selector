@@ -1,4 +1,4 @@
-# svg-fallback [![Build Status](https://secure.travis-ci.org/justim/postcss-svg-fallback.png)](https://travis-ci.org/justim/postcss-svg-fallback)
+# pocstcss-svg-to-png-selector [![Build Status](https://secure.travis-ci.org/justim/postcss-svg-fallback.png)](https://travis-ci.org/justim/postcss-svg-fallback)
 
 > This plugin  automatically writes CSS rule with fallback selector, built on top of the [PostCSS] ecosystem.
 
