@@ -45,11 +45,22 @@ module.exports = postcss.plugin('pocstcss-svg-to-png-selector', function(options
 			if (backgroundImage) {
 				newImage = backgroundImage.replace(/\.svg$/, '.png');
 
-				// The path to png-icon.
+				// Путь до png иконки.
 				var pathToPng = __dirname + '/' + newImage;
 
-				// If the png-file exists, append the fallback.
-				if (fs.statSync(pathToPng).isFile()) {
+				var checkExistPng = function() {
+					var exists;
+					try {
+						exists = fs.statSync(pathToPng).isFile();
+					} catch (err) {
+						console.log("Файл - " + pathToPng + ' не найден');
+						exists = false;
+					}
+					return exists
+				}
+
+				// Если png файл существует, то добавляем фолбек.
+				if (checkExistPng()) {
 
 					images.push({
 						postcssResult: result,
