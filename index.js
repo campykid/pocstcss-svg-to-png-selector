@@ -1,12 +1,14 @@
-
 'use strict';
+var fs = require('fs');
 var postcss = require('postcss');
+
 var backgroundImageRegex = /url\('?([^')]+\.svg)'?\)/;
 
-module.exports = postcss.plugin('pocstcss-svg-to-png-selector', function(options) {
+module.exports = postcss.plugin('postcss-svg-fallback', function(options) {
 	var fallbackSelector;
 
 	options = options || {};
+
 	fallbackSelector = options.fallbackSelector || '.no-svg';
 
 	return function (css, result) {
@@ -43,23 +45,32 @@ module.exports = postcss.plugin('pocstcss-svg-to-png-selector', function(options
 			if (backgroundImage) {
 				newImage = backgroundImage.replace(/\.svg$/, '.png');
 
-				images.push({
-					postcssResult: result,
-					postcssRule: rule,
-					image: backgroundImage,
-				});
+				// The path to png-icon.
+				var pathToPng = __dirname + '/' + newImage;
 
-				newRule = postcss.rule({ selector: fallbackSelector + ' ' + rule.selector });
-				newRule.source = rule.source;
+				// If the png-file exists, append the fallback.
+				if (fs.statSync(pathToPng).isFile()) {
 
-				newDecl = postcss.decl({
-					prop: 'background-image',
-					value: 'url(' + newImage + ')',
-				});
-				newDecl.source = matchedBackgroundImageDecl.source;
+					images.push({
+						postcssResult: result,
+						postcssRule: rule,
+						image: backgroundImage,
+					});
 
-				newRule.append(newDecl);
-				rule.parent.insertAfter(rule, newRule);
+					newRule = postcss.rule({ selector: fallbackSelector + ' ' + rule.selector });
+					newRule.source = rule.source;
+
+					newDecl = postcss.decl({
+						prop: 'background-image',
+						value: 'url(' + newImage + ')',
+					});
+					newDecl.source = matchedBackgroundImageDecl.source;
+
+					newRule.append(newDecl);
+					rule.parent.insertAfter(rule, newRule);
+				} else {
+					return;
+				}
 			}
 		});
 	};
