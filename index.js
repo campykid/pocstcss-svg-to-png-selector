@@ -20,6 +20,7 @@ module.exports = postcss.plugin('pocstcss-svg-to-png-selector', function(options
 			var newRule;
 			var newDecl;
 			var matchedBackgroundImageDecl;
+			var yamoneyProjectPathToNewImage;
 
 			// skip our added rules
 			if (rule.selector.indexOf(fallbackSelector) !== -1) {
@@ -45,8 +46,12 @@ module.exports = postcss.plugin('pocstcss-svg-to-png-selector', function(options
 			if (backgroundImage) {
 				newImage = backgroundImage.replace(/\.svg$/, '.png');
 
+				// Исправляем путь прешедщий из css бандла на путь, относительно плагина.
+				yamoneyProjectPathToNewImage = __dirname + '/' + newImage.replace('../../../../', '../../')
+
+				console.log(yamoneyProjectPathToNewImage);
 				// Путь до png иконки.
-				var pathToPng = __dirname + '/' + newImage;
+				var pathToPng = yamoneyProjectPathToNewImage;
 
 				var checkExistPng = function() {
 					var exists;
