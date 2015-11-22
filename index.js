@@ -1,5 +1,6 @@
 'use strict';
 var fs = require('fs');
+var path = require('path');
 var postcss = require('postcss');
 
 var backgroundImageRegex = /url\('?([^')]+\.svg)'?\)/;
@@ -20,6 +21,7 @@ module.exports = postcss.plugin('pocstcss-svg-to-png-selector', function(options
 			var newRule;
 			var newDecl;
 			var matchedBackgroundImageDecl;
+			var yamoneyProjectPathToNewImage;
 
 			// skip our added rules
 			if (rule.selector.indexOf(fallbackSelector) !== -1) {
@@ -45,21 +47,18 @@ module.exports = postcss.plugin('pocstcss-svg-to-png-selector', function(options
 			if (backgroundImage) {
 				newImage = backgroundImage.replace(/\.svg$/, '.png');
 
-				// Путь до png иконки.
-				var pathToPng = __dirname + '/' + newImage;
+				var pathToPng = path.dirname(css.source.input.file) + '/' + newImage;
 
 				var checkExistPng = function() {
 					var exists;
 					try {
 						exists = fs.statSync(pathToPng).isFile();
 					} catch (err) {
-						console.log("Файл - " + pathToPng + ' не найден');
 						exists = false;
 					}
 					return exists
 				}
 
-				// Если png файл существует, то добавляем фолбек.
 				if (checkExistPng()) {
 
 					images.push({
