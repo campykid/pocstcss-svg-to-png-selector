@@ -1,4 +1,4 @@
-# pocstcss-svg-to-png-selector [![Build Status](https://secure.travis-ci.org/justim/postcss-svg-fallback.png)](https://travis-ci.org/justim/postcss-svg-fallback)
+# postcss-svg-to-png-selector [![Build Status](https://secure.travis-ci.org/justim/postcss-svg-fallback.png)](https://travis-ci.org/justim/postcss-svg-fallback)
 
 This plugin  automatically writes CSS rule with fallback selector, built on top of the [PostCSS] ecosystem.
 > Note: If you need automatic convertation, look here - https://github.com/justim/postcss-svg-fallback
@@ -14,7 +14,7 @@ Here a way to add [PostCSS] plugin to [project-stub](https://github.com/bem/proj
 	[require('enb-bundle-postcss/techs/enb-bundle-postcss'), {
 		source: '?.post.css',
 		sourcemap: true,
-		plugins: [require('pocstcss-svg-to-png-selector')({
+		plugins: [require('postcss-svg-to-png-selector')({
 			fallbackSelector: '.no-svg'
 		})]
 	}]
