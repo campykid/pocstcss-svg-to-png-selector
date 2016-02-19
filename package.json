@@ -1,5 +1,5 @@
 {
-  "name": "pocstcss-svg-to-png-selector",
+  "name": "postcss-svg-to-png-selector",
   "version": "1.0.1",
   "description": "This plugin  automatically writes CSS rule with fallback selector, built on top of the [PostCSS] ecosystem.",
   "main": "index.js",
