@@ -23,7 +23,7 @@ Here a way to add [PostCSS] plugin to [project-stub](https://github.com/bem/proj
 ```
 
 
-Converts this:
+Converts from:
 
 ```css
 .icon {
@@ -31,7 +31,7 @@ Converts this:
 }
 ```
 
-to this:
+to:
 
 ```css
 .icon {
