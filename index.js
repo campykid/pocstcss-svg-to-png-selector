@@ -19,7 +19,7 @@ module.exports = postcss.plugin('postcss-svg-to-png-selector', function (options
 			var matchedBackgroundImageDecl;
 			var pathToSourceFile;
 
-			// Пропускаем добавленные правила.
+			// Skip added rules
 			if (rule.selector.indexOf(fallbackSelector) !== -1) {
 				return;
 			}
